@@ -15,7 +15,7 @@ class CatRentalRequest < ActiveRecord::Base
 
 
   def overlapping_requests
-    CatRentalRequest.find_by_sql([<<-SQL, self.cat_id, self.id, self.start_date, self.end_date, self.start_date, self.end_date])
+    CatRentalRequest.find_by_sql([<<-SQL, self.cat_id, self.id, self.start_date, self.end_date, self.start_date, self.end_date, self.start_date, self.end_date])
     SELECT
     *
     FROM
@@ -23,11 +23,33 @@ class CatRentalRequest < ActiveRecord::Base
     WHERE
     cat_id = ? AND
     id <> ? AND 
-    ((start_date between ? and ?) OR (end_date between ? and ?))
+    ((start_date between ? AND ?) OR (end_date between ? AND ?) OR (start_date < ? AND end_date > ?))
     SQL
   end
   
   def overlapping_approved_requests
     overlapping_requests.select { |request| request.status == "APPROVED" }
   end
+  
+  def overlapping_pending_requests
+    overlapping_requests.select { |request| request.status == "PENDING" }
+  end
+  
+  def approve!
+    transaction do
+      self.status = "APPROVED"
+      self.save!
+    
+      self.overlapping_pending_requests.each do |request|
+        request.deny!
+      end
+    end
+  end
+  
+  def deny!
+    self.status = "DENIED"
+    self.save!
+  end
+  
+  
 end

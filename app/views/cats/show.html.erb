@@ -28,11 +28,13 @@
   <tr>
     <td>Start date</td>
     <td>End date</td>
+    <td>Status</td>
   </tr>
   <% @cat.rental_requests.each do |request| %>
   <tr>
     <td>&nbsp;&nbsp;<%= request.start_date %>&nbsp;&nbsp;</td>
     <td>&nbsp;&nbsp;<%= request.end_date %>&nbsp;&nbsp;</td>
+    <td>&nbsp;&nbsp;<%= request.status %>&nbsp;&nbsp;</td>
   </tr>
   <% end %>
 </table>
