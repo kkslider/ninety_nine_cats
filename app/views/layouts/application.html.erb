@@ -8,6 +8,14 @@
 </head>
 <body>
 
+  <% if !current_user %>
+  <%= button_to("Sign in", new_session_url, :method => :get) %>
+  <%= button_to("Register", new_user_url, :method => :get) %>
+  <% else %>
+  <%= "Welcome back #{current_user.user_name}!" %>
+  <%= button_to("Sign out", session_url, :method => :delete) %>
+  <% end %>
+
 <%= yield %>
 
 </body>

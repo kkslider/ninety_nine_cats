@@ -7,7 +7,10 @@
 <h2>Create new cat</h2>
 <% end %>
 <form action="<%= action %>" method="post">
-  
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+         
   <% if cat.persisted? %>
   <input type="hidden" name="_method" value="put">
   <% end %>
