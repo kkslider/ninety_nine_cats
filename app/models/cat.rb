@@ -12,6 +12,7 @@ class Cat < ActiveRecord::Base
   :class_name => "CatRentalRequest",
   :foreign_key => :cat_id,
   :primary_key => :id,
+  :order => "start_date ASC",
   :dependent => :destroy
   )
 
