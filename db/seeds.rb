@@ -7,3 +7,15 @@ CatRentalRequest.create!({ :cat_id => 1, :start_date => "15/02/2000", :end_date 
 CatRentalRequest.create!({ :cat_id => 1, :start_date => "16/02/2000", :end_date => "18/02/2000" })
 CatRentalRequest.create!({ :cat_id => 1, :start_date => "01/02/2000", :end_date => "28/02/2000" })
 CatRentalRequest.create!({ :cat_id => 2, :start_date => "01/03/2000", :end_date => "30/03/2000" })
+
+user1 = User.new({ :user_name => "bob1" })
+user1.password = "bob1"
+user1.save!
+
+user2 = User.new({ :user_name => "bob2" })
+user2.password = "bob2"
+user2.save!
+
+user3 = User.new({ :user_name => "bob3" })
+user3.password = "bob3"
+user3.save!
