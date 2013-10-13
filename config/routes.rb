@@ -7,4 +7,6 @@ NinetyNineCats::Application.routes.draw do
       put 'deny'
     end
   end
+  
+  resource :session
 end
