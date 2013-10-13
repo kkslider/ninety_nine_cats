@@ -51,5 +51,8 @@ class CatRentalRequest < ActiveRecord::Base
     self.save!
   end
   
+  def pending?
+    self.status == "PENDING"
+  end
   
 end

@@ -1,3 +1,9 @@
 NinetyNineCats::Application.routes.draw do
-  resources :cats, :cat_rental_requests
+  resources :cats
+  resources :cat_rental_requests do
+    member do
+      put 'approve'
+      put 'deny'
+    end
+  end
 end

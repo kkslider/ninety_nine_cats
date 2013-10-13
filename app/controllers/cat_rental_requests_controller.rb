@@ -13,6 +13,19 @@ class CatRentalRequestsController < ApplicationController
     redirect_to cat_url(cat)
   end
   
+  def approve
+    @request = CatRentalRequest.find(params[:id])
+    @request.approve!
+    cat = @request.cat
+    
+    redirect_to cat_url(cat)
+  end
   
-  
+  def deny
+    @request = CatRentalRequest.find(params[:id])
+    @request.deny!
+    cat = @request.cat
+    
+    redirect_to cat_url(cat)
+  end
 end
