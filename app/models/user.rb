@@ -8,6 +8,13 @@ class User < ActiveRecord::Base
     self.reset_session_token! if !self.session_token
   end
   
+  has_many(
+  :cats,
+  :class_name => "Cat",
+  :foreign_key => :user_id,
+  :primary_key => :id
+  )
+  
   def reset_session_token!
     self.session_token = SecureRandom::urlsafe_base64(16)
     self.save!
