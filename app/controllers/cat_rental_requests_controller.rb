@@ -45,7 +45,4 @@ class CatRentalRequestsController < ApplicationController
     #flash error
     redirect_to cat_url(cat_requested) unless cat_requested.owner == current_user
   end
-  
-  
-  
 end

@@ -1,6 +1,10 @@
 <h2>Create Cat Rental Request Form</h2>
 
 <form action="<%= cat_rental_requests_url %>" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+         
   <label for="cat_rental_request_cat_id">Desired cat</label>
   <select name="cat_rental_request[cat_id]" id="cat_rental_request_cat_id">
     <option></option>
@@ -18,8 +22,6 @@
   
   <label for="cat_rental_request_end_date">End date</label>
   <input name="cat_rental_request[end_date]" id="cat_rental_request_end_date" type="date">
-  
-  
   <br>
   <br>
   

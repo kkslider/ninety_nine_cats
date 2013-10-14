@@ -5,3 +5,5 @@
     <li><%= link_to "#{cat.name}", cat_url(cat) %></li>
   <% end %>
 </ul>
+
+<%= button_to("Create rental request", new_cat_rental_request_url, method: :get) %>
