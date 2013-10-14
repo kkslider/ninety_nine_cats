@@ -22,5 +22,9 @@ class Cat < ActiveRecord::Base
   :foreign_key => :user_id,
   :primary_key => :id
   )
+  
+  def has_pending_requests?
+    self.rental_requests.any? { |request| request.status == "PENDING" }
+  end
 
 end

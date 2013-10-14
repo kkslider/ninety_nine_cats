@@ -29,7 +29,7 @@
     <td>Start date</td>
     <td>End date</td>
     <td>Status</td>
-    <% if @cat.owner == current_user %>
+    <% if @cat.owner == current_user && @cat.has_pending_requests? %>
     <td>Approve?</td>
     <td>Deny?</td>
     <% end %>
@@ -39,7 +39,7 @@
     <td>&nbsp;&nbsp;<%= request.start_date %>&nbsp;&nbsp;</td>
     <td>&nbsp;&nbsp;<%= request.end_date %>&nbsp;&nbsp;</td>
     <td>&nbsp;&nbsp;<%= request.status %>&nbsp;&nbsp;</td>
-    <% if request.pending? && @cat.owner == current_user %>
+    <% if request.pending? && @cat.owner == current_user && @cat.has_pending_requests? %>
     <td>
       <%= button_to "Approve", "/cat_rental_requests/#{request.id}/approve", :method => :put %>
     </td>
