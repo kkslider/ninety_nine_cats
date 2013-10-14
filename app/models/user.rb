@@ -1,7 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  attr_accessible :user_name, :password_digest
+  attr_accessible :user_name, :password_digest, :password
   validates :user_name, :password_digest, :session_token, presence: true
   validates :user_name, :session_token, uniqueness: true
   before_validation(on: :create) do
