@@ -1,4 +1,6 @@
 class CatRentalRequestsController < ApplicationController
+  before_filter :require_owner_for_approval!, only: [:approve, :deny]
+  
   def new
     @cats = Cat.all
     
@@ -28,4 +30,22 @@ class CatRentalRequestsController < ApplicationController
     
     redirect_to cat_url(cat)
   end
+  
+  private
+  
+  def current_request
+    @current_request ||= CatRentalRequest.find(params[:id])
+  end
+  
+  def cat_requested
+    Cat.find(current_request.cat_id)
+  end
+  
+  def require_owner_for_approval!
+    #flash error
+    redirect_to cat_url(cat_requested) unless cat_requested.owner == current_user
+  end
+  
+  
+  
 end

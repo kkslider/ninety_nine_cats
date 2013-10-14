@@ -26,5 +26,4 @@ class Cat < ActiveRecord::Base
   def has_pending_requests?
     self.rental_requests.any? { |request| request.status == "PENDING" }
   end
-
 end

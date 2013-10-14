@@ -29,7 +29,7 @@
     <td>Start date</td>
     <td>End date</td>
     <td>Status</td>
-    <% if @cat.owner == current_user && @cat.has_pending_requests? %>
+    <% if @cat.has_pending_requests? && @cat.owner == current_user %>
     <td>Approve?</td>
     <td>Deny?</td>
     <% end %>
